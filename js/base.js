@@ -51,14 +51,15 @@ $(document).ready(function(){
 //        }
 //        navitag += "</li>"
     for( var i in navidata ){
-        navitag += `<li><a href='${navidata[i].d1[1]}'>${navidata[i].d1[0]}</a>`
+        navitag += `<li class="nav-item"><a href='${navidata[i].d1[1]}' class="d-block py-2 py-md-0 px-0 px-md-3">${navidata[i].d1[0]}</a>`
         for( var j in navidata[i].d2){
-            if( j == 0 ) navitag += `<ul>`
+            if( j == 0 ) navitag += `<ul class="bg-white d2">`
+            // 소메뉴
             navitag += `<li><a href='${navidata[i].d2[j][1]}'>${navidata[i].d2[j][0]}</a>`
             if( j == navidata[i].d2.length - 1 ) navitag += `</ul>`;
         }
         navitag += `</li>`
     }
 //    }
-    $('ul#navi').html(navitag); // 화면에 출력
+    $('#navbarNav > ul').html(navitag); // 화면에 출력
 })
