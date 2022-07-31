@@ -34,10 +34,22 @@ var navidata = [
 
 $(document).ready(function(){
     var navitag = '';
-    var navilength = navidata.length; // 대메뉴 개수
+    // var navilength = navidata.length; // 대메뉴 개수
 
-    for(var i=0; i < navilength; i++ ){ // 다중처리
-        navitag += "<li><a href='" + navidata[i].d1[1] +"'>" + navidata[i].d1[0] + "</a></li>"
+    for(var i in navidata){
+    // for(var i=0; i < navilength; i++ ){ // 다중처리
+        navitag += "<li><a href='" + navidata[i].d1[1] +"'>" + navidata[i].d1[0] + "</a>"
+        for(var j in navidata[i].d2){
+            // forin 문: index번호를 받을 변수 앞자리, Array 객체
+            // navidata 객체의 d2 변수가 비어 있다면 처리 안함
+            // 소메뉴가 없는 데이터는 처리 안함
+            // navidata[i] 각 메뉴마다 d2[j] 소메뉴마다
+            if( j == 0 ) navitag += "<ul>"
+            navitag += "<li><a href='" + navidata[i].d2[j][1] +"'>" + navidata[i].d2[j][0] + "</a>"
+            if( j == navidata[i].d2.length - 1 ) navitag += "</ul>"
+
+        }
+        navitag += "</li>"
     }
-    $('#navi').html(navitag)
+    $('#navi').html(navitag) // 화면에 출력
 })
