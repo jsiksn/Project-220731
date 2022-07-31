@@ -1,29 +1,43 @@
 
+
+var navidata = [
+    {
+        d1 : ['회사소개', 'company.html'],
+        d2 : [
+            ['비전', 'vision.html'],
+            ['인사말', 'intro.html'],
+            ['주요연혁', 'history.html'],
+            ['CI 소개', 'ci.html'],
+            ['찾아오시는길', 'location.html']
+        ]
+    },
+    {
+        d1 : ['사업영역', 'business.html'],
+        d2 : [
+            ['소재사업', 'material.html'],
+            ['포장설비 엔지니어랑', 'engineering.html']
+        ]
+    },
+    {
+        d1 : ['NEWS', 'news.html'],
+        d2 : [
+        ]
+    },
+    {
+        d1 : ['구매조달시스템', 'buy.html'],
+        d2 : [
+        ]
+    }
+]
+
+// console.log(navidata[1].d2[0][0],navidata[1].d2[0][1])
+
 $(document).ready(function(){
-//스타일도 컨텐츼도 모두 태그에서 관리하도록 프로그래밍하기
-// data- 라는 태그옵션을 사용해라!!!
-   $('#navi li a').each(function(){
-       // 각자들 실행해 
-       // 태그에서 텍스트와 스타일까지 관리가 가능하도록 했다.
-       $(this).html($(this).data('krnm'))
-       //각 a태그의 data옵션 krnm의 값을 저장해두고 출력하기
-       $(this).css('color', $(this).data('color'))
-       //각 a태그의 data옵션 color의 값으로 글자색을 처리하겠다.
-       $(this).parent().css('border-color', $(this).data('color'))
-   })
+    var navitag = '';
+    var navilength = navidata.length; // 대메뉴 개수
 
-   //상품출력
-   $("#product .thumb  h2").html(
-    $("#product .thumb").data('prnm')
-   ); //상품명 출력하기 공주실내화 노출하기
-   //상품가격도전!
-   $("#product .thumb  p").html(
-    $("#product .thumb").data('price')
-   );
-   //상품이미지출력
-   $("#product .thumb  img").attr('src', $("#product .thumb").data('img'))
-   // attr 태그의 속성접근 메서드
-
- 
-
+    for(var i=0; i < navilength; i++ ){ // 다중처리
+        navitag += "<li><a href='" + navidata[i].d1[1] +"'>" + navidata[i].d1[0] + "</a></li>"
+    }
+    $('#navi').html(navitag)
 })
